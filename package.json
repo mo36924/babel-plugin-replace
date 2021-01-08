@@ -1,0 +1,131 @@
+{
+  "name": "@mo36924/babel-plugin-replace",
+  "version": "1.0.0",
+  "description": "babel-plugin-replace",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "homepage": "https://github.com/mo36924/babel-plugin-replace#readme",
+  "bugs": {
+    "url": "https://github.com/mo36924/babel-plugin-replace/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mo36924/babel-plugin-replace.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "module": "./dist/index.mjs",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "build",
+    "clean": "del dist",
+    "format": "prettier --write .",
+    "lint": "eslint --ext .ts,.tsx --fix .",
+    "test": "jest"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "trailingComma": "all"
+  },
+  "eslintConfig": {
+    "plugins": [
+      "import",
+      "react-hooks"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "ignorePatterns": [
+      "/dist/"
+    ],
+    "rules": {
+      "no-var": "error",
+      "import/no-absolute-path": "error",
+      "import/no-dynamic-require": "error",
+      "import/no-webpack-loader-syntax": "error",
+      "import/no-self-import": "error",
+      "import/no-useless-path-segments": "error",
+      "import/order": [
+        "error",
+        {
+          "alphabetize": {
+            "order": "asc"
+          }
+        }
+      ],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "padding-line-between-statements": [
+        "warn",
+        {
+          "blankLine": "always",
+          "prev": "import",
+          "next": "*"
+        },
+        {
+          "blankLine": "any",
+          "prev": "import",
+          "next": "import"
+        },
+        {
+          "blankLine": "always",
+          "prev": "*",
+          "next": "export"
+        },
+        {
+          "blankLine": "any",
+          "prev": "export",
+          "next": "export"
+        },
+        {
+          "blankLine": "always",
+          "prev": "*",
+          "next": [
+            "class",
+            "function",
+            "block",
+            "block-like",
+            "multiline-expression",
+            "multiline-const",
+            "multiline-let"
+          ]
+        },
+        {
+          "blankLine": "always",
+          "prev": [
+            "class",
+            "function",
+            "block",
+            "block-like",
+            "multiline-expression",
+            "multiline-const",
+            "multiline-let"
+          ],
+          "next": "*"
+        }
+      ]
+    }
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "snapshotSerializers": [
+      "@mo36924/jest-snapshot-serializer-babel"
+    ]
+  },
+  "dependencies": {
+    "@types/babel__core": "^7.1.12"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@mo36924/build": "^1.0.6"
+  }
+}
